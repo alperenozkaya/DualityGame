@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 5562242668112543206, guid: 18f695bd0f1371b4098ef838ac9c4937, type: 3}
   deathSound: {fileID: 786711757}
-  bullet: {fileID: 0}
   fire: {fileID: 0}
+  bullet: {fileID: 0}
 --- !u!50 &485560229965909955
 Rigidbody2D:
   serializedVersion: 4

@@ -22,6 +22,11 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rb.velocity.magnitude != 1500)
+        {
+            rb.velocity = rb.velocity.normalized * 1500 * Time.deltaTime;
+        }
+
         if (transform.position.x < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().color = Color.black;
@@ -31,7 +36,6 @@ public class BulletController : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

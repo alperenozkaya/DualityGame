@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class RightBadge : MonoBehaviour
 {
+    private BoxCollider2D collider;
+
+    private SpriteRenderer sprenderer;
+
     public bool enemyTouch;
 
     private void Start()
     {
         enemyTouch = false;
+        
+        sprenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,11 +25,14 @@ public class RightBadge : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             enemyTouch = true;
-            
+            sprenderer.enabled = false;
+            collider.enabled = false;
         }
         else
         {
             enemyTouch = false;
+            sprenderer.enabled = true;
+            collider.enabled = true;
         }
     }
 }

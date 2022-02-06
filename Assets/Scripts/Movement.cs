@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public ParticleSystem particle;
 
     public AudioSource deathSound;
+    public AudioSource fire;
 
     public GameObject bullet;
 
@@ -20,7 +21,6 @@ public class Movement : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    [SerializeField] private AudioSource fire;
 
 
     // Start is called before the first frame update
@@ -59,17 +59,17 @@ public class Movement : MonoBehaviour
             Fire();
         }
 
-        if (gameObject.CompareTag("Player") && transform.position.x > -0.175f)
+        if (gameObject.CompareTag("Player") && transform.position.x > -0.5f)
         {
-            gameObject.transform.position = new Vector2(-0.175f, transform.position.y);
+            gameObject.transform.position = new Vector2(-0.5f, transform.position.y);
         }
 
-        if (gameObject.CompareTag("Enemy") && transform.position.x < 0.175f)
+        if (gameObject.CompareTag("Enemy") && transform.position.x < 0.5f)
         {
-            gameObject.transform.position = new Vector2(0.175f, transform.position.y);
+            gameObject.transform.position = new Vector2(0.5f, transform.position.y);
         }
 
-       
+
 
     }
 
@@ -87,11 +87,11 @@ public class Movement : MonoBehaviour
 
     void Fire()
     {
+        fire.Play();
         Vector2 bulletSpawnPosition = new Vector2(gameObject.transform.position.x + 0.1f,
             gameObject.transform.position.y);
 
         Instantiate(bullet, bulletSpawnPosition, bullet.transform.rotation);
-        fire.Play();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
